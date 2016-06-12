@@ -255,9 +255,12 @@ $loader-size: 0.5em;
     flex-grow: 1;
     display: inline-block;
     margin-right: 1.4%;
-    width: 30px;
+    width: 0px;
     text-align: center;
     vertical-align: middle;
+  }
+  li.li-long {
+    flex-grow: 1.618;
   }
 
   .instrument-name {

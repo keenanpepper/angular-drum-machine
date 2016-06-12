@@ -1,6 +1,6 @@
 'use strict';
 
-var Beat = function() {
+var Beat = function(isLongBeat) {
   var active = false;
 
   function isActive() {
@@ -19,11 +19,16 @@ var Beat = function() {
     active = (active ? false : true);
   }
 
+  function isLong() {
+    return isLongBeat;
+  }
+
   // Return public functions
   return {
     isActive: isActive,
     activate: activate,
     deactivate: deactivate,
-    toggle: toggle
+    toggle: toggle,
+    isLong: isLong
   }
 };

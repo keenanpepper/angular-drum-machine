@@ -5,8 +5,9 @@ app.factory('drumMachine', function($http, $q, timerQueue) {
   // Private variables
   var _playing = false;
   var _currentBeat = 0;
+  var _currentMeasure = 0;
   var _delay = 100;
-  var _gridLength = 16;
+  var _gridLength = 13;
   var _tempo = 120;
   var _timers = timerQueue;
   var _rows = [];
@@ -93,15 +94,16 @@ app.factory('drumMachine', function($http, $q, timerQueue) {
       //var thisTime = new Date().getTime();
       //console.log("Delay: " + _delay + " Diff: " + (thisTime - lastTime));
       //lastTime = thisTime;
-      if (_currentBeat >= _gridLength) {
-        _currentBeat = 0;
+      if (_currentBeat >= 13) {
+        _currentBeat = fibword(_currentMeasure) == 1 ? 0 : 5;
+        _currentMeasure += 1;
       }
 
       for (var i = 0; i < _rows.length; i++) {
         _rows[i].playSound(_currentBeat);
       }
+      _timers.add(playBeat(), fibword(_currentBeat) == 1 ? phi*_delay : _delay);
       _currentBeat += 1;
-      _timers.add(playBeat(), _delay);
     };
   }
 

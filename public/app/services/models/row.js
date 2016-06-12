@@ -17,7 +17,7 @@ var Row = function(instrument, initialBeats) {
 
   function addBeats(num) {
     for(var i = 0; i < num; i++) {
-      beats.push(new Beat());
+      beats.push(new Beat(fibword(i)));
     }
   }
 
